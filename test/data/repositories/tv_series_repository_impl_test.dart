@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:ditonton/data/models/episode_model.dart';
 import 'package:ditonton/data/models/genre_model.dart';
+import 'package:ditonton/data/models/season_detail_model.dart';
 import 'package:ditonton/data/models/season_model.dart';
 import 'package:ditonton/data/models/tv_series_detail_model.dart';
 import 'package:ditonton/data/models/tv_series_model.dart';
@@ -222,7 +224,7 @@ void main() {
       numberOfEpisodes: 1,
       numberOfSeasons: 1,
       type: 'Type',
-      voteAverage: 1,
+      voteAverage: 1.0,
       voteCount: 1,
     );
 
@@ -351,6 +353,75 @@ void main() {
       // assert
       expect(
           result, Left(ConnectionFailure('Failed to connect to the network')));
+    });
+  });
+
+  group('Get Season Detail', () {
+    final tId = 1;
+    final seasonNumber = 1;
+    final tSeasonResponse = SeasonDetailResponse(
+      id: 1,
+      airDate: '2020-02-02',
+      episodes: [
+        EpisodeModel(
+          airDate: '2019-04-06',
+          episodeNumber: 1,
+          id: 1,
+          name: 'Cruelty',
+          overview:
+              'It is the Taisho Period (i.e. 1912-1926). Tanjiro Kamado is living a modest but blissful life in the mountains with his family. One day, when he returns from selling charcoal in town, he finds the remains of his slaughtered family in pools of blood after a demon attack. Tanjiro rushes down the snowy mountain with the sole survivor, his sister Nezuko, on his back. But on the way, Nezuko suddenly snarls, turning on Tanjiro.',
+          stillPath: '/stillPath.jpg',
+          voteAverage: 1.0,
+        )
+      ],
+      name: 'Name',
+      overview: 'Overview',
+      posterPath: '/path.jpg',
+      seasonNumber: 1,
+      voteAverage: 1.0,
+    );
+
+    test(
+        'should return TvSeries data when the call to remote data source is successful',
+        () async {
+      // arrange
+      when(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber))
+          .thenAnswer((_) async => tSeasonResponse);
+      // act
+      final result =
+          await repository.getTvSeriesSeasonDetail(tId, seasonNumber);
+      // assert
+      verify(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber));
+      expect(result, equals(Right(testSeasonDetail)));
+    });
+
+    test(
+        'should return Server Failure when the call to remote data source is unsuccessful',
+        () async {
+      // arrange
+      when(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber))
+          .thenThrow(ServerException());
+      // act
+      final result =
+          await repository.getTvSeriesSeasonDetail(tId, seasonNumber);
+      // assert
+      verify(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber));
+      expect(result, equals(Left(ServerFailure(''))));
+    });
+
+    test(
+        'should return connection failure when the device is not connected to internet',
+        () async {
+      // arrange
+      when(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber))
+          .thenThrow(SocketException('Failed to connect to the network'));
+      // act
+      final result =
+          await repository.getTvSeriesSeasonDetail(tId, seasonNumber);
+      // assert
+      verify(mockRemoteDataSource.getTvSeriesSeasonDetail(tId, seasonNumber));
+      expect(result,
+          equals(Left(ConnectionFailure('Failed to connect to the network'))));
     });
   });
 

@@ -7,7 +7,7 @@ class EpisodeModel extends Equatable {
   final int id;
   final String name;
   final String overview;
-  final String stillPath;
+  final String? stillPath;
   final double voteAverage;
 
   EpisodeModel({

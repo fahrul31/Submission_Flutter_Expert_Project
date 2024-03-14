@@ -1,0 +1,27 @@
+{
+    "_id": "5c40f1780e0a26765392df5a",
+    "air_date": "2019-04-06",
+    "episodes": [
+        {
+            "air_date": "2019-04-06",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 1,
+            "name": "Cruelty",
+            "overview": "It is the Taisho Period (i.e. 1912-1926). Tanjiro Kamado is living a modest but blissful life in the mountains with his family. One day, when he returns from selling charcoal in town, he finds the remains of his slaughtered family in pools of blood after a demon attack. Tanjiro rushes down the snowy mountain with the sole survivor, his sister Nezuko, on his back. But on the way, Nezuko suddenly snarls, turning on Tanjiro.",
+            "production_code": "",
+            "runtime": 1,
+            "season_number": 1,
+            "show_id": 1,
+            "still_path": "/stillPath.jpg",
+            "vote_average": 1.0,
+            "vote_count": 1
+        }
+    ],
+    "name": "Name",
+    "overview": "Overview",
+    "id": 1,
+    "poster_path": "/path.jpg",
+    "season_number": 1,
+    "vote_average": 1.0
+}
