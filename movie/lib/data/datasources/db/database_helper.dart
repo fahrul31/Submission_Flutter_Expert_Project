@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:movie/data/model/movie_table.dart';
-import 'package:movie/utils/encrypt.dart';
-import 'package:sqflite_sqlcipher/sqflite.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelperMovie {
   static DatabaseHelperMovie? _databaseHelperMovie;
@@ -16,9 +15,7 @@ class DatabaseHelperMovie {
   static Database? _database;
 
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await _initDb();
-    }
+    _database ??= await _initDb();
     return _database;
   }
 
@@ -33,7 +30,6 @@ class DatabaseHelperMovie {
       databasePath,
       version: 1,
       onCreate: _onCreate,
-      password: encrypt('Your secure password...'),
     );
     return db;
   }

@@ -10,7 +10,7 @@ class EpisodeModel extends Equatable {
   final String? stillPath;
   final double voteAverage;
 
-  EpisodeModel({
+  const EpisodeModel({
     required this.airDate,
     required this.episodeNumber,
     required this.id,
@@ -42,18 +42,17 @@ class EpisodeModel extends Equatable {
 
   Episode toEntity() {
     return Episode(
-      airDate: this.airDate,
-      episodeNumber: this.episodeNumber,
-      id: this.id,
-      name: this.name,
-      overview: this.overview,
-      stillPath: this.stillPath,
-      voteAverage: this.voteAverage,
+      airDate: airDate,
+      episodeNumber: episodeNumber,
+      id: id,
+      name: name,
+      overview: overview,
+      stillPath: stillPath,
+      voteAverage: voteAverage,
     );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         airDate,
         episodeNumber,

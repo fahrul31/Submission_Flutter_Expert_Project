@@ -12,13 +12,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tv-series';
+  static const routeName = '/detail-tv-series';
 
   final int id;
-  TvSeriesDetailPage({required this.id});
+  const TvSeriesDetailPage({super.key, required this.id});
 
   @override
-  _TvSeriesDetailPageState createState() => _TvSeriesDetailPageState();
+  State<TvSeriesDetailPage> createState() => _TvSeriesDetailPageState();
 }
 
 class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
@@ -64,7 +64,7 @@ class DetailContent extends StatelessWidget {
   final TvSeriesDetail tvSeries;
   final List<TvSeries> recommendations;
 
-  DetailContent(this.tvSeries, this.recommendations);
+  const DetailContent(this.tvSeries, this.recommendations, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class DetailContent extends StatelessWidget {
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
@@ -212,7 +212,7 @@ class DetailContent extends StatelessWidget {
                                         onTap: () {
                                           Navigator.pushNamed(
                                             context,
-                                            TvSeriesSeasonDetailPage.ROUTE_NAME,
+                                            TvSeriesSeasonDetailPage.routeName,
                                             arguments: {
                                               "id": tvSeries.id,
                                               "seasonNumber":
@@ -259,7 +259,7 @@ class DetailContent extends StatelessWidget {
                                       onTap: () {
                                         Navigator.pushReplacementNamed(
                                           context,
-                                          TvSeriesDetailPage.ROUTE_NAME,
+                                          TvSeriesDetailPage.routeName,
                                           arguments: tvSeries.id,
                                         );
                                       },

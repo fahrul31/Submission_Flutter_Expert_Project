@@ -34,7 +34,7 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
 
   test('initial state should be empty', () {
     expect(movieDetailWatchlistBloc.state, MovieDetailWatchlistEmpty());
@@ -46,7 +46,7 @@ void main() {
       when(mockGetWatchlistStatus.execute(tId)).thenAnswer((_) async => true);
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(GetStatusWatchlist(tId)),
+    act: (bloc) => bloc.add(const GetStatusWatchlist(tId)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistSaved("")
@@ -62,7 +62,7 @@ void main() {
       when(mockGetWatchlistStatus.execute(tId)).thenAnswer((_) async => false);
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(GetStatusWatchlist(tId)),
+    act: (bloc) => bloc.add(const GetStatusWatchlist(tId)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistNotSaved("")
@@ -79,7 +79,7 @@ void main() {
           .thenAnswer((_) async => const Right("Success"));
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(SaveWatchlistChanged(testMovieDetail)),
+    act: (bloc) => bloc.add(const SaveWatchlistChanged(testMovieDetail)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistSaved("Success")
@@ -93,10 +93,10 @@ void main() {
     'Should emit [Loading, Error] when data is failed saved watchlist',
     build: () {
       when(mockSaveWatchlist.execute(testMovieDetail))
-          .thenAnswer((_) async => Left(DatabaseFailure('Failed')));
+          .thenAnswer((_) async => const Left(DatabaseFailure('Failed')));
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(SaveWatchlistChanged(testMovieDetail)),
+    act: (bloc) => bloc.add(const SaveWatchlistChanged(testMovieDetail)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistError("Failed")
@@ -113,7 +113,7 @@ void main() {
           .thenAnswer((_) async => const Right("Success Removed"));
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(RemoveWatchlistChanged(testMovieDetail)),
+    act: (bloc) => bloc.add(const RemoveWatchlistChanged(testMovieDetail)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistNotSaved("Success Removed")
@@ -127,10 +127,10 @@ void main() {
     'Should emit [Loading, "Error"] when data is success removed watchlist',
     build: () {
       when(mockRemoveWatchlist.execute(testMovieDetail))
-          .thenAnswer((_) async => Left(DatabaseFailure("Failed")));
+          .thenAnswer((_) async => const Left(DatabaseFailure("Failed")));
       return movieDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(RemoveWatchlistChanged(testMovieDetail)),
+    act: (bloc) => bloc.add(const RemoveWatchlistChanged(testMovieDetail)),
     expect: () => <MovieDetailWatchlistState>[
       MovieDetailWatchlistLoading(),
       const MovieDetailWatchlistError("Failed")

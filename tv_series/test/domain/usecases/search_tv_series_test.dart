@@ -15,7 +15,7 @@ void main() {
     usecase = SearchTvSeries(mockTvSeriesRepository);
   });
 
-  final tQuery = 'demon slayer';
+  const tQuery = 'demon slayer';
   final tTvSeries = <TvSeries>[];
 
   test('should get list of tv series from repository', () async {

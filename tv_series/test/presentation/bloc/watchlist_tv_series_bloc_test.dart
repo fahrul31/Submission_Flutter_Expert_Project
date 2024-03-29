@@ -47,7 +47,7 @@ void main() {
     'Should emit [Loading, Error] when get all list TvSeries is unsuccessful',
     build: () {
       when(mockGetWatchlistTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure("Can't get data")));
+          .thenAnswer((_) async => const Left(ServerFailure("Can't get data")));
       return watchlistTvSeriesbloc;
     },
     act: (bloc) => bloc.add(FetchWatchlistTvSeries()),

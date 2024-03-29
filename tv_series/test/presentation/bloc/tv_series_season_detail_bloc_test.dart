@@ -23,7 +23,7 @@ void main() {
     );
   });
 
-  final tSeasonDetail = SeasonDetail(
+  const tSeasonDetail = SeasonDetail(
     id: 85937,
     overview:
         'It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a living, finds his family slaughtered by a demon. To make matters worse, his younger sister Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his sister back into a human, and kill the demon that massacred his family.',
@@ -46,7 +46,7 @@ void main() {
   );
   const tId = 85937;
   const tSeasonNumber = 1;
-  final tSeasonDetailList = tSeasonDetail;
+  const tSeasonDetailList = tSeasonDetail;
 
   test('initial state should be empty', () {
     expect(tvSeriesDetailSeasonBloc.state, TvSeriesDetailSeasonEmpty());
@@ -56,13 +56,14 @@ void main() {
     'Should emit [Loading, HasData] when data is gotten successfully',
     build: () {
       when(mockGetTvSeriesSeasonDetail.execute(tId, tSeasonNumber))
-          .thenAnswer((_) async => Right(tSeasonDetailList));
+          .thenAnswer((_) async => const Right(tSeasonDetailList));
       return tvSeriesDetailSeasonBloc;
     },
-    act: (bloc) => bloc.add(FetchTvSeriesDetailSeason(tId, tSeasonNumber)),
+    act: (bloc) =>
+        bloc.add(const FetchTvSeriesDetailSeason(tId, tSeasonNumber)),
     expect: () => <TvSeriesDetailSeasonState>[
       TvSeriesDetailSeasonLoading(),
-      TvSeriesDetailSeasonHasData(tSeasonDetailList)
+      const TvSeriesDetailSeasonHasData(tSeasonDetailList)
     ],
     verify: (bloc) {
       verify(mockGetTvSeriesSeasonDetail.execute(tId, tSeasonNumber));
@@ -73,10 +74,11 @@ void main() {
     'Should emit [Loading, Error] when get all list TvSeries is unsuccessful',
     build: () {
       when(mockGetTvSeriesSeasonDetail.execute(tId, tSeasonNumber))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesDetailSeasonBloc;
     },
-    act: (bloc) => bloc.add(FetchTvSeriesDetailSeason(tId, tSeasonNumber)),
+    act: (bloc) =>
+        bloc.add(const FetchTvSeriesDetailSeason(tId, tSeasonNumber)),
     expect: () => [
       TvSeriesDetailSeasonLoading(),
       const TvSeriesDetailSeasonError('Server Failure'),

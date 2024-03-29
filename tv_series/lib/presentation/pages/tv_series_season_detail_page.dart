@@ -8,14 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class TvSeriesSeasonDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail-tv-series-season';
+  static const routeName = '/detail-tv-series-season';
 
   final int id;
   final int seasonNumber;
-  TvSeriesSeasonDetailPage({required this.id, required this.seasonNumber});
+  const TvSeriesSeasonDetailPage(
+      {super.key, required this.id, required this.seasonNumber});
 
   @override
-  _TvSeriesSeasonDetailPageState createState() =>
+  State<TvSeriesSeasonDetailPage> createState() =>
       _TvSeriesSeasonDetailPageState();
 }
 
@@ -40,7 +41,7 @@ class _TvSeriesSeasonDetailPageState extends State<TvSeriesSeasonDetailPage> {
             child: CircularProgressIndicator(),
           );
         } else if (state is TvSeriesDetailSeasonHasData) {
-          final tvSeriesSeason = state.TvSeriesDetailSeason;
+          final tvSeriesSeason = state.tvSeriesDetailSeason;
           return SafeArea(
             child: DetailContent(tvSeriesSeason),
           );
@@ -59,7 +60,7 @@ class _TvSeriesSeasonDetailPageState extends State<TvSeriesSeasonDetailPage> {
 class DetailContent extends StatelessWidget {
   final SeasonDetail season;
 
-  DetailContent(this.season);
+  const DetailContent(this.season, {super.key});
 
   @override
   Widget build(BuildContext context) {

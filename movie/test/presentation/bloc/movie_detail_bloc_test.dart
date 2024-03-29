@@ -30,7 +30,7 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
 
   final tMovie = Movie(
     adult: false,
@@ -49,9 +49,9 @@ void main() {
   );
   final tMovies = <Movie>[tMovie];
 
-  void _arrangeUsecase() {
+  void arrangeUsecase() {
     when(mockGetMovieDetail.execute(tId))
-        .thenAnswer((_) async => Right(testMovieDetail));
+        .thenAnswer((_) async => const Right(testMovieDetail));
     when(mockGetMovieRecommendations.execute(tId))
         .thenAnswer((_) async => Right(tMovies));
   }
@@ -63,10 +63,10 @@ void main() {
   blocTest<MovieDetailBloc, MovieDetailState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
     build: () {
-      _arrangeUsecase();
+      arrangeUsecase();
       return movieDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchMovieDetail(tId)),
+    act: (bloc) => bloc.add(const FetchMovieDetail(tId)),
     expect: () => <MovieDetailState>[
       MovieDetailLoading(),
       MovieDetailHasData(testMovieDetail, tMovies)
@@ -81,12 +81,12 @@ void main() {
     'Should emit [Loading, Error] when get recommendation Movie is unsuccessful',
     build: () {
       when(mockGetMovieDetail.execute(tId))
-          .thenAnswer((_) async => Right(testMovieDetail));
+          .thenAnswer((_) async => const Right(testMovieDetail));
       when(mockGetMovieRecommendations.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return movieDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchMovieDetail(tId)),
+    act: (bloc) => bloc.add(const FetchMovieDetail(tId)),
     expect: () => <MovieDetailState>[
       MovieDetailLoading(),
       const MovieDetailError('Server Failure')
@@ -101,12 +101,12 @@ void main() {
     'Should emit [Loading, Error] when get all list Movie is unsuccessful',
     build: () {
       when(mockGetMovieDetail.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       when(mockGetMovieRecommendations.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return movieDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchMovieDetail(tId)),
+    act: (bloc) => bloc.add(const FetchMovieDetail(tId)),
     expect: () => <MovieDetailState>[
       MovieDetailLoading(),
       const MovieDetailError('Server Failure')

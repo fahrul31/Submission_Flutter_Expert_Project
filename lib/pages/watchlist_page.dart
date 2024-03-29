@@ -7,12 +7,12 @@ import 'package:movie/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
-  static const ROUTE_NAME = '/watchlist';
+  static const routeName = '/watchlist';
 
   const WatchlistPage({super.key});
 
   @override
-  _WatchlistPageState createState() => _WatchlistPageState();
+  State<WatchlistPage> createState() => _WatchlistPageState();
 }
 
 class _WatchlistPageState extends State<WatchlistPage> with RouteAware {

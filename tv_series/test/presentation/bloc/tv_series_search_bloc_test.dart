@@ -51,7 +51,7 @@ void main() {
           .thenAnswer((_) async => Right(tTvSeriesList));
       return tvSeriesSearchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       TvSeriesSearchLoading(),
@@ -66,14 +66,14 @@ void main() {
     'Should emit [Loading, Error] when get search is unsuccessful',
     build: () {
       when(mockSearchTvSeriess.execute(tQuery))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesSearchBloc;
     },
-    act: (bloc) => bloc.add(OnQueryChanged(tQuery)),
+    act: (bloc) => bloc.add(const OnQueryChanged(tQuery)),
     wait: const Duration(milliseconds: 500),
     expect: () => [
       TvSeriesSearchLoading(),
-      TvSeriesSearchError('Server Failure'),
+      const TvSeriesSearchError('Server Failure'),
     ],
     verify: (bloc) {
       verify(mockSearchTvSeriess.execute(tQuery));

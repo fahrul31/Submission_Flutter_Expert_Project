@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 class TvSeriesResponse extends Equatable {
   final List<TvSeriesModel> tvSeriesList;
 
-  TvSeriesResponse({
+  const TvSeriesResponse({
     required this.tvSeriesList,
   });
 

@@ -12,7 +12,7 @@ class SeasonDetailResponse extends Equatable {
   final int seasonNumber;
   final double voteAverage;
 
-  SeasonDetailResponse({
+  const SeasonDetailResponse({
     required this.id,
     required this.airDate,
     required this.episodes,
@@ -49,19 +49,18 @@ class SeasonDetailResponse extends Equatable {
 
   SeasonDetail toEntity() {
     return SeasonDetail(
-      airDate: this.airDate,
-      episodes: this.episodes.map((episode) => episode.toEntity()).toList(),
-      id: this.id,
-      name: this.name,
-      overview: this.overview,
-      posterPath: this.posterPath,
-      seasonNumber: this.seasonNumber,
-      voteAverage: this.voteAverage,
+      airDate: airDate,
+      episodes: episodes.map((episode) => episode.toEntity()).toList(),
+      id: id,
+      name: name,
+      overview: overview,
+      posterPath: posterPath,
+      seasonNumber: seasonNumber,
+      voteAverage: voteAverage,
     );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         airDate,
         id,

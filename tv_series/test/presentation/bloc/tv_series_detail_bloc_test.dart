@@ -30,12 +30,12 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
 
   final tTvSeries = TvSeries(
     adult: false,
     backdropPath: '/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg',
-    genreIds: [16, 10759, 10765],
+    genreIds: const [16, 10759, 10765],
     id: 85937,
     originalLanguage: "JP",
     originalName: '鬼滅の刃',
@@ -50,9 +50,9 @@ void main() {
   );
   final tTvSeriess = <TvSeries>[tTvSeries];
 
-  void _arrangeUsecase() {
+  void arrangeUsecase() {
     when(mockGetTvSeriesDetail.execute(tId))
-        .thenAnswer((_) async => Right(testTvSeriesDetail));
+        .thenAnswer((_) async => const Right(testTvSeriesDetail));
     when(mockGetTvSeriesRecommendations.execute(tId))
         .thenAnswer((_) async => Right(tTvSeriess));
   }
@@ -64,10 +64,10 @@ void main() {
   blocTest<TvSeriesDetailBloc, TvSeriesDetailState>(
     'Should emit [Loading, HasData] when data is gotten successfully',
     build: () {
-      _arrangeUsecase();
+      arrangeUsecase();
       return tvSeriesDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchTvSeriesDetail(tId)),
+    act: (bloc) => bloc.add(const FetchTvSeriesDetail(tId)),
     expect: () => <TvSeriesDetailState>[
       TvSeriesDetailLoading(),
       TvSeriesDetailHasData(testTvSeriesDetail, tTvSeriess)
@@ -82,12 +82,12 @@ void main() {
     'Should emit [Loading, Error] when get recommendation TvSeries is unsuccessful',
     build: () {
       when(mockGetTvSeriesDetail.execute(tId))
-          .thenAnswer((_) async => Right(testTvSeriesDetail));
+          .thenAnswer((_) async => const Right(testTvSeriesDetail));
       when(mockGetTvSeriesRecommendations.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchTvSeriesDetail(tId)),
+    act: (bloc) => bloc.add(const FetchTvSeriesDetail(tId)),
     expect: () => <TvSeriesDetailState>[
       TvSeriesDetailLoading(),
       const TvSeriesDetailError('Server Failure')
@@ -102,12 +102,12 @@ void main() {
     'Should emit [Loading, Error] when get all list TvSeries is unsuccessful',
     build: () {
       when(mockGetTvSeriesDetail.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       when(mockGetTvSeriesRecommendations.execute(tId))
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesDetailBloc;
     },
-    act: (bloc) => bloc.add(FetchTvSeriesDetail(tId)),
+    act: (bloc) => bloc.add(const FetchTvSeriesDetail(tId)),
     expect: () => <TvSeriesDetailState>[
       TvSeriesDetailLoading(),
       const TvSeriesDetailError('Server Failure')

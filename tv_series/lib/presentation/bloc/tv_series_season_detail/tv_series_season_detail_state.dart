@@ -21,10 +21,10 @@ final class TvSeriesDetailSeasonError extends TvSeriesDetailSeasonState {
 }
 
 final class TvSeriesDetailSeasonHasData extends TvSeriesDetailSeasonState {
-  final SeasonDetail TvSeriesDetailSeason;
+  final SeasonDetail tvSeriesDetailSeason;
 
-  const TvSeriesDetailSeasonHasData(this.TvSeriesDetailSeason);
+  const TvSeriesDetailSeasonHasData(this.tvSeriesDetailSeason);
 
   @override
-  List<Object> get props => [TvSeriesDetailSeason];
+  List<Object> get props => [tvSeriesDetailSeason];
 }

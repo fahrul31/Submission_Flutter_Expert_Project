@@ -33,7 +33,7 @@ void main() {
   final tTvSeries = TvSeries(
     adult: false,
     backdropPath: '/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg',
-    genreIds: [16, 10759, 10765],
+    genreIds: const [16, 10759, 10765],
     id: 85937,
     originalLanguage: "JP",
     originalName: '鬼滅の刃',
@@ -79,11 +79,11 @@ void main() {
     'Should emit [Loading, Error] when get all list TvSeries is unsuccessful',
     build: () {
       when(mockGetNowPlayingTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       when(mockGetPopularTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       when(mockGetTopRatedTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesListBloc;
     },
     act: (bloc) => bloc.add(FetchTvSeries()),
@@ -104,9 +104,9 @@ void main() {
       when(mockGetNowPlayingTvSeries.execute())
           .thenAnswer((_) async => Right(tTvSeriesList));
       when(mockGetPopularTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       when(mockGetTopRatedTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesListBloc;
     },
     act: (bloc) => bloc.add(FetchTvSeries()),
@@ -129,7 +129,7 @@ void main() {
       when(mockGetPopularTvSeries.execute())
           .thenAnswer((_) async => Right(tTvSeriesList));
       when(mockGetTopRatedTvSeries.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvSeriesListBloc;
     },
     act: (bloc) => bloc.add(FetchTvSeries()),

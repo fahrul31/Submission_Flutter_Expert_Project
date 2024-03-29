@@ -64,7 +64,7 @@ void main() {
     'Should emit [Loading, Error] when get all list Movie is unsuccessful',
     build: () {
       when(mockGetTopRatedMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+          .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return topRatedMoviebloc;
     },
     act: (bloc) => bloc.add(FetchTopRatedMovie()),

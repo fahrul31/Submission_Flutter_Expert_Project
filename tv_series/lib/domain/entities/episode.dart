@@ -9,7 +9,7 @@ class Episode extends Equatable {
   final String? stillPath;
   final double voteAverage;
 
-  Episode({
+  const Episode({
     required this.airDate,
     required this.episodeNumber,
     required this.id,
@@ -20,7 +20,6 @@ class Episode extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         airDate,
         episodeNumber,

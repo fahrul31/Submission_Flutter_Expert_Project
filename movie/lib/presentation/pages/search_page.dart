@@ -3,10 +3,11 @@ import 'package:movie/presentation/bloc/movie_search/search_bloc.dart';
 import 'package:movie/styles/text_styles.dart';
 import '../widget/movie_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SearchPage extends StatelessWidget {
-  static const ROUTE_NAME = '/search';
+  static const routeName = '/search';
+
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {

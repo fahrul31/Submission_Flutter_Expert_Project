@@ -13,7 +13,7 @@ import 'package:http/src/base_request.dart' as _i20;
 import 'package:http/src/response.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i19;
-import 'package:sqflite_sqlcipher/sqflite.dart' as _i9;
+import 'package:sqflite/sqflite.dart' as _i9;
 import 'package:tv_series/data/datasources/db/database_helper.dart' as _i7;
 import 'package:tv_series/data/datasources/tv_series_local_data_source.dart'
     as _i18;

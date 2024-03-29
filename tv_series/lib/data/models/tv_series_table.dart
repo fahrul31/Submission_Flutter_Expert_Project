@@ -8,7 +8,7 @@ class TvSeriesTable extends Equatable {
   final String? posterPath;
   final String? overview;
 
-  TvSeriesTable({
+  const TvSeriesTable({
     required this.id,
     required this.name,
     required this.posterPath,
@@ -44,6 +44,5 @@ class TvSeriesTable extends Equatable {
       );
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, name, posterPath, overview];
 }

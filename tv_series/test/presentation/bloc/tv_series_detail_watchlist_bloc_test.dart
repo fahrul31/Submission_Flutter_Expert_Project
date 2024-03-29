@@ -34,7 +34,7 @@ void main() {
     );
   });
 
-  final tId = 1;
+  const tId = 1;
 
   test('initial state should be empty', () {
     expect(tvSeriesDetailWatchlistBloc.state, TvSeriesDetailWatchlistEmpty());
@@ -47,7 +47,7 @@ void main() {
           .thenAnswer((_) async => true);
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(GetStatusWatchlist(tId)),
+    act: (bloc) => bloc.add(const GetStatusWatchlist(tId)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistSaved("")
@@ -64,7 +64,7 @@ void main() {
           .thenAnswer((_) async => false);
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(GetStatusWatchlist(tId)),
+    act: (bloc) => bloc.add(const GetStatusWatchlist(tId)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistNotSaved("")
@@ -81,7 +81,7 @@ void main() {
           .thenAnswer((_) async => const Right("Success"));
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(SaveWatchlistChanged(testTvSeriesDetail)),
+    act: (bloc) => bloc.add(const SaveWatchlistChanged(testTvSeriesDetail)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistSaved("Success")
@@ -95,10 +95,10 @@ void main() {
     'Should emit [Loading, Error] when data is failed saved watchlist',
     build: () {
       when(mockSaveWatchTvSeries.execute(testTvSeriesDetail))
-          .thenAnswer((_) async => Left(DatabaseFailure('Failed')));
+          .thenAnswer((_) async => const Left(DatabaseFailure('Failed')));
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(SaveWatchlistChanged(testTvSeriesDetail)),
+    act: (bloc) => bloc.add(const SaveWatchlistChanged(testTvSeriesDetail)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistError("Failed")
@@ -115,7 +115,7 @@ void main() {
           .thenAnswer((_) async => const Right("Success Removed"));
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(RemoveWatchlistChanged(testTvSeriesDetail)),
+    act: (bloc) => bloc.add(const RemoveWatchlistChanged(testTvSeriesDetail)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistNotSaved("Success Removed")
@@ -129,10 +129,10 @@ void main() {
     'Should emit [Loading, "Error"] when data is success removed watchlist',
     build: () {
       when(mockRemoveWatchlistTvSeries.execute(testTvSeriesDetail))
-          .thenAnswer((_) async => Left(DatabaseFailure("Failed")));
+          .thenAnswer((_) async => const Left(DatabaseFailure("Failed")));
       return tvSeriesDetailWatchlistBloc;
     },
-    act: (bloc) => bloc.add(RemoveWatchlistChanged(testTvSeriesDetail)),
+    act: (bloc) => bloc.add(const RemoveWatchlistChanged(testTvSeriesDetail)),
     expect: () => <TvSeriesDetailWatchlistState>[
       TvSeriesDetailWatchlistLoading(),
       const TvSeriesDetailWatchlistError("Failed")

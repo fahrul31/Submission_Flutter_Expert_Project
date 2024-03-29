@@ -47,7 +47,7 @@ void main() {
     'Should emit [Loading, Error] when get all list Movie is unsuccessful',
     build: () {
       when(mockGetWatchlistMovies.execute())
-          .thenAnswer((_) async => Left(ServerFailure("Can't get data")));
+          .thenAnswer((_) async => const Left(ServerFailure("Can't get data")));
       return watchlistMoviebloc;
     },
     act: (bloc) => bloc.add(FetchWatchlistMovie()),

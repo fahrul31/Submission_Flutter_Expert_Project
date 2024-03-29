@@ -11,7 +11,7 @@ class SeasonDetail extends Equatable {
   final int seasonNumber;
   final double voteAverage;
 
-  SeasonDetail({
+  const SeasonDetail({
     required this.id,
     required this.airDate,
     required this.episodes,
@@ -23,7 +23,6 @@ class SeasonDetail extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         airDate,
         id,

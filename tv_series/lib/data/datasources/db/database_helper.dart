@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'package:tv_series/utils/encrypt.dart';
-
+import 'package:sqflite/sqflite.dart';
 import '../../models/tv_series_table.dart';
-import 'package:sqflite_sqlcipher/sqflite.dart';
 
 class DatabaseHelperTvSeries {
   static DatabaseHelperTvSeries? _databaseHelperTvSeries;
@@ -16,9 +14,7 @@ class DatabaseHelperTvSeries {
   static Database? _database;
 
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await _initDb();
-    }
+    _database ??= await _initDb();
     return _database;
   }
 
@@ -33,7 +29,6 @@ class DatabaseHelperTvSeries {
       databasePath,
       version: 1,
       onCreate: _onCreate,
-      password: encrypt('Your secure password...'),
     );
     return db;
   }

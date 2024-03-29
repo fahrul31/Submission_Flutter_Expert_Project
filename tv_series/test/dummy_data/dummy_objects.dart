@@ -4,7 +4,7 @@ import 'package:tv_series/domain/entities/season.dart';
 import 'package:tv_series/domain/entities/tv_series.dart';
 import 'package:tv_series/domain/entities/tv_series_detail.dart';
 
-final testTvSeriesDetail = TvSeriesDetail(
+const testTvSeriesDetail = TvSeriesDetail(
   adult: false,
   backdropPath: 'backdropPath',
   firstAirDate: '2020-02-02',
@@ -41,7 +41,7 @@ final testTvSeriesDetail = TvSeriesDetail(
 final testTvSeries = TvSeries(
   adult: false,
   backdropPath: '/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg',
-  genreIds: [16, 10759, 10765],
+  genreIds: const [16, 10759, 10765],
   id: 85937,
   originalLanguage: "JP",
   originalName: '鬼滅の刃',
@@ -64,7 +64,7 @@ final testWatchlistTvSeries = TvSeries.watchlist(
   overview: 'overview',
 );
 
-final testTvSeriesTable = TvSeriesTable(
+const testTvSeriesTable = TvSeriesTable(
   id: 1,
   name: 'name',
   posterPath: 'posterPath',

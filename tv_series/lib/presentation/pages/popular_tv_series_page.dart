@@ -2,13 +2,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_series/popular_tv_series_bloc.dart';
 import '../widgets/tv_series_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class PopularTvSeriesPage extends StatefulWidget {
-  static const ROUTE_NAME = '/popular-tv-series';
+  static const routeName = '/popular-tv-series';
+
+  const PopularTvSeriesPage({super.key});
 
   @override
-  _PopularTvSeriesPageState createState() => _PopularTvSeriesPageState();
+  State<PopularTvSeriesPage> createState() => _PopularTvSeriesPageState();
 }
 
 class _PopularTvSeriesPageState extends State<PopularTvSeriesPage> {

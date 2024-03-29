@@ -23,7 +23,7 @@ import 'package:movie/domain/entities/movie.dart' as _i9;
 import 'package:movie/domain/entities/movie_detail.dart' as _i10;
 import 'package:movie/domain/repositories/movie_repository.dart' as _i6;
 import 'package:movie/utils/failure.dart' as _i8;
-import 'package:sqflite_sqlcipher/sqflite.dart' as _i17;
+import 'package:sqflite/sqflite.dart' as _i17;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
