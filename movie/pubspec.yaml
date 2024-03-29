@@ -30,7 +30,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.0.8
-  build_runner: ^2.0.4
+  build_runner: ^2.4.9
   bloc_test: ^9.1.7
   
 
