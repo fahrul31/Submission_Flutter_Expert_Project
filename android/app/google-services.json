@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "910867846883",
+    "project_id": "ditonton-a8270",
+    "storage_bucket": "ditonton-a8270.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867846883:android:8526b29c876efc332a97d6",
+        "android_client_info": {
+          "package_name": "com.example.a199_flutter_expert_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx3R9THTmcI3XaZc9sNM1DgLdZPyyd1iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910867846883:android:0a32254ff11556d92a97d6",
+        "android_client_info": {
+          "package_name": "com.example.submission_flutter_expert_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx3R9THTmcI3XaZc9sNM1DgLdZPyyd1iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
