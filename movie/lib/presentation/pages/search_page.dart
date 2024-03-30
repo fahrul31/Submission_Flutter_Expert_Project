@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/movie_search/search_bloc.dart';
 import 'package:movie/styles/text_styles.dart';
@@ -22,6 +23,7 @@ class SearchPage extends StatelessWidget {
           children: [
             TextField(
               onChanged: (query) {
+                FirebaseCrashlytics.instance.crash();
                 context.read<MovieSearchBloc>().add(OnQueryChanged(query));
               },
               decoration: const InputDecoration(

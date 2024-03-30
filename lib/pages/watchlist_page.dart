@@ -3,7 +3,7 @@ import 'package:movie/presentation/bloc/watchlist_movie/watchlist_movie_bloc.dar
 import 'package:movie/presentation/widget/movie_card_list.dart';
 import 'package:tv_series/presentation/bloc/watchlist_tv_series/watchlist_tv_series_bloc.dart';
 import 'package:tv_series/presentation/widgets/tv_series_card_list.dart';
-import 'package:movie/utils/utils.dart';
+import 'package:ditonton/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class WatchlistPage extends StatefulWidget {
@@ -55,6 +55,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               } else if (state is WatchlistMovieHasData) {
                 final data = state.watchlistMovies;
                 return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     final movie = data[index];
@@ -79,6 +80,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               } else if (state is WatchlistTvSeriesHasData) {
                 final data = state.watchlistTvSeriess;
                 return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     final tvSeries = data[index];

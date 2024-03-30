@@ -1,6 +1,8 @@
 import 'package:tv_series/data/models/tv_series_table.dart';
+import 'package:tv_series/domain/entities/episode.dart';
 import 'package:tv_series/domain/entities/genre.dart';
 import 'package:tv_series/domain/entities/season.dart';
+import 'package:tv_series/domain/entities/season_detail.dart';
 import 'package:tv_series/domain/entities/tv_series.dart';
 import 'package:tv_series/domain/entities/tv_series_detail.dart';
 
@@ -36,6 +38,28 @@ const testTvSeriesDetail = TvSeriesDetail(
   type: 'Type',
   voteAverage: 1,
   voteCount: 1,
+);
+
+const tSeasonDetail = SeasonDetail(
+  id: 85937,
+  overview:
+      'It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a living, finds his family slaughtered by a demon. To make matters worse, his younger sister Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his sister back into a human, and kill the demon that massacred his family.',
+  posterPath: '/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg',
+  name: 'Demon Slayer: Kimetsu no Yaiba',
+  voteAverage: 8.674,
+  airDate: '2019-04-06',
+  episodes: [
+    Episode(
+      airDate: '2019-04-06',
+      episodeNumber: 1,
+      id: 1,
+      name: "Cruelty",
+      overview: "overview",
+      stillPath: "stillPath.jpg",
+      voteAverage: 1,
+    )
+  ],
+  seasonNumber: 1,
 );
 
 final testTvSeries = TvSeries(
